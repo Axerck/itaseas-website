@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<nav aria-label="breadcrumb">
+    <ul>
+        <li><a href="{{ site.baseurl }}/">Home</a></li>
+        <li><a href="{{ site.baseurl }}/associazione/">Associazione</a></li>
+        <li>{{ page.title }}</li>
+    </ul>
+</nav>
+
+<article>
+    <header>
+        {% if page.image %}
+        <img src="{{ page.image }}" alt="{{ page.title }}"
+            style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; float: left; margin-right: 1.5rem; border: 4px solid var(--pico-primary);">
+        {% else %}
+        <div
+            style="width: 150px; height: 150px; background: #eee; border-radius: 50%; float: left; margin-right: 1.5rem; display: flex; align-items: center; justify-content: center; color: #999; border: 4px solid var(--pico-primary);">
+            Foto</div>
+        {% endif %}
+
+        <hgroup>
+            <h1>{{ page.title }}</h1>
+            {% if page.role %}<h2>{{ page.role }}</h2>{% endif %}
+            {% if page.affiliation %}<h3>{{ page.affiliation }}</h3>{% endif %}
+        </hgroup>
+        <div style="clear: both;"></div>
+    </header>
+
+    {{ content }}
+
+    {% if page.email or page.website %}
+    <footer>
+        <strong>Contatti:</strong><br>
+        {% if page.email %}Email: <a href="mailto:{{ page.email }}">{{ page.email }}</a><br>{% endif %}
+        {% if page.website %}Sito web: <a href="{{ page.website }}" target="_blank">{{ page.website }}</a>{% endif %}
+    </footer>
+    {% endif %}
+</article>

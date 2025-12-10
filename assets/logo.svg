@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600">
+  <!-- ITA in White, SEAS in Light Blue -->
+  <text x="40" y="360" font-family="Arial, sans-serif" font-size="320" font-weight="700">
+    <tspan fill="#FFFFFF">ITA</tspan><tspan fill="#89CFF0">SEAS</tspan>
+  </text>
+  <text x="45" y="520" font-family="Arial, sans-serif" font-size="70" fill="#FFFFFF" opacity="0.9">
+    Italian Association for Southeast Asian Studies
+  </text>
+</svg>

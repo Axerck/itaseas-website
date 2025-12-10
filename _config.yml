@@ -1,0 +1,15 @@
+title: ITASEAS
+description: Italian Association of South East Asian Studies
+baseurl: ""
+url: "https://itaseas.it"
+
+# Il Menu di Navigazione (Apparirà su tutte le pagine)
+navigation:
+  - title: Home
+    url: /
+  - title: Associazione
+    url: /associazione/
+  - title: Conferenze
+    url: /conferenze/
+  - title: Attività
+    url: /attivita.html

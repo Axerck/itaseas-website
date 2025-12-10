@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description"
+    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+
+  <!-- Pico.css CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+
+  <!-- Custom Styles -->
+  <style>
+    /* Custom tweaks for ITASEAS institutional look */
+    :root {
+      --pico-font-size: 100%;
+
+      /* THEME COLORS */
+      --brand-blue: #c22a10;
+      /* Derived from uploaded image */
+
+      /* Pico Overrides */
+      --pico-primary: var(--brand-blue);
+      --pico-primary-background: var(--brand-blue);
+      --pico-primary-underline: rgba(20, 112, 173, 0.5);
+      --pico-primary-hover: #bc3d07;
+      --pico-primary-focus: rgba(20, 112, 173, 0.25);
+      --pico-primary-inverse: #fff;
+    }
+
+    /* Full width Header */
+    body>header {
+      background-color: var(--brand-blue);
+      color: #fff;
+      border-bottom: none;
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Full width Footer */
+    body>footer {
+      background-color: var(--brand-blue);
+      color: #fff;
+      border-top: none;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+
+    body>footer small {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Logo Styling */
+    .brand-logo img {
+      /* Filter removed to allow SVG colors (White/LightBlue) to show */
+    }
+
+    .brand-logo:hover img {
+      opacity: 0.8;
+    }
+
+    /* Nav links - Ensure they are white in the header */
+    body>header nav ul li a {
+      color: #fff;
+      --pico-nav-link-spacing-vertical: 0.5rem;
+      font-weight: 500;
+    }
+
+    body>header nav ul li a:hover {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+    }
+
+    /* Active link style in header */
+    body>header nav ul li a.contrast {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    nav ul li strong {
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <a href="{{ site.baseurl }}/" class="brand-logo" style="display: block; padding: 0;">
+              <!-- Colored Logo - Filtered via CSS to be white -->
+              <img src="{{ site.baseurl }}/assets/logo.svg" alt="{{ site.title }}"
+                style="height: 80px; width: auto; max-height: none;">
+            </a>
+          </li>
+        </ul>
+        <ul>
+          {% for link in site.navigation %}
+          <li><a href="{{ site.baseurl }}{{ link.url }}" {% if page.url==link.url %}class="contrast" aria-current="page"
+              {% endif %}>{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <small>
+        &copy; {{ site.time | date: '%Y' }} {{ site.title }} - {{ site.description }}
+      </small>
+    </div>
+  </footer>
+</body>
+
+</html>
