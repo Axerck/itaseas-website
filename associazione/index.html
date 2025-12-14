@@ -1,74 +1,99 @@
 ---
 layout: default
-title: Associazione
+title: Soci ITASEAS
 ---
 
-<h1>Associazione</h1>
+<hgroup>
+    <h1>Membri</h1>
 
-<!-- Sezione Direttivo -->
-<section id="direttivo">
-    <hgroup>
-        <h2>Direttivo</h2>
-        <h3>Consiglio Direttivo in carica</h3>
-    </hgroup>
+</hgroup>
 
-    <div class="grid">
-        <article>
-            <header>Presidente</header>
-            <h3>Nome Cognome</h3>
-            <p>Università di Esempio</p>
-        </article>
-        <article>
-            <header>Vice Presidente</header>
-            <h3>Nome Cognome</h3>
-            <p>Università di Esempio</p>
-        </article>
-        <article>
-            <header>Segretario</header>
-            <h3>Nome Cognome</h3>
-            <p>Università di Esempio</p>
-        </article>
-    </div>
-</section>
-
-<hr>
-
-<!-- Sezione Membri -->
-<section id="membri">
-    <hgroup>
-        <h2>Membri dell'Associazione</h2>
-        <h3>Elenco dei soci ITASEAS</h3>
-    </hgroup>
-
-    <p>Clicca su un membro per visualizzare il profilo completo.</p>
-
-    <div class="grid">
-        <!-- Esempio Membro 1 -->
-        <div>
-            <article>
-                <header>Socio Ordinario</header>
-                <h4><a href="{{ site.baseurl }}/associazione/membri/mario-rossi.html">Mario Rossi</a></h4>
-                <p>Università degli Studi di Napoli "L'Orientale"</p>
-                <!-- Place holders -->
-            </article>
+<div class="directory-list">
+    {% for member in site.data.members %}
+    <div class="member-row">
+        <div class="member-info">
+            <h3 class="member-name">{{ member.name }}</h3>
+            <div class="member-affil">{{ member.affiliation }}</div>
         </div>
 
-        <!-- Placeholder Membro 2 -->
-        <div>
-            <article>
-                <header>Socio Ordinario</header>
-                <h4><a href="#">Nome Cognome</a></h4>
-                <p>Affiliazione</p>
-            </article>
-        </div>
-
-        <!-- Placeholder Membro 3 -->
-        <div>
-            <article>
-                <header>Socio Onorario</header>
-                <h4><a href="#">Nome Cognome</a></h4>
-                <p>Affiliazione</p>
-            </article>
+        <div class="member-action">
+            {% if member.url %}
+            <a href="{{ member.url }}" target="_blank" class="link-arrow">
+                Profilo Istituzionale <span>&nearr;</span>
+            </a>
+            {% endif %}
         </div>
     </div>
-</section>
+    {% endfor %}
+</div>
+
+<style>
+    /* Stile Directory Pulita */
+    .directory-list {
+        margin-top: 3rem;
+        border-top: 2px solid var(--pico-muted-border-color);
+    }
+
+    .member-row {
+        display: flex;
+        justify-content: space-between;
+        /* Spinge il link a destra */
+        align-items: center;
+        /* Allinea verticalmente al centro */
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--pico-muted-border-color);
+        transition: background-color 0.2s;
+    }
+
+    .member-row:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        /* Leggero effetto hover */
+    }
+
+    .member-info h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        color: var(--pico-h3-color);
+        margin-bottom: 0.2rem;
+    }
+
+    .member-affil {
+        color: var(--pico-muted-color);
+        font-size: 0.95rem;
+    }
+
+    /* Link discreto */
+    .link-arrow {
+        font-size: 0.9rem;
+        text-decoration: none !important;
+        color: var(--pico-primary);
+        opacity: 0.9;
+        border: 1px solid var(--pico-primary);
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        /* Pillola arrotondata */
+        white-space: nowrap;
+        /* Impedisce al testo di andare a capo */
+    }
+
+    .link-arrow:hover {
+        opacity: 1;
+        background: var(--pico-primary);
+        color: var(--pico-primary-inverse);
+        border-color: var(--pico-primary);
+    }
+
+    /* Adattamento per cellulari */
+    @media (max-width: 600px) {
+        .member-row {
+            flex-direction: column;
+            /* Impila verticalmente */
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .member-action {
+            align-self: flex-start;
+        }
+    }
+</style>
