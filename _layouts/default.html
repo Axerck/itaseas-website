@@ -122,6 +122,52 @@
     nav ul li strong {
       font-size: 1.25rem;
     }
+
+    /* DESKTOP DEFAULT: Hide hamburger */
+    #menu-toggle {
+      display: none;
+    }
+
+    /* MOBILE RESPONSIVE STYLES */
+    @media (max-width: 768px) {
+
+      /* Show hamburger */
+      #menu-toggle {
+        display: block;
+      }
+
+      /* Adjust Nav Container to wrap */
+      body>header nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      /* Hide Main Menu by default on mobile */
+      #main-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 1rem;
+        text-align: center;
+      }
+
+      #main-menu li {
+        padding: 0.5rem 0;
+        width: 100%;
+      }
+
+      /* Show menu when open */
+      #main-menu.open {
+        display: flex;
+      }
+
+      /* Ensure logo stays big */
+      .brand-logo img {
+        height: 80px !important;
+        max-height: none !important;
+        width: auto !important;
+      }
+    }
   </style>
 </head>
 
@@ -139,7 +185,13 @@
             </a>
           </li>
         </ul>
+        <!-- Hamburger Menu Button -->
         <ul>
+          <li>
+            <a href="#" id="menu-toggle" class="contrast" style="font-size: 1.5rem; text-decoration: none;">☰</a>
+          </li>
+        </ul>
+        <ul id="main-menu">
           {% for link in site.navigation %}
           <li><a href="{{ site.baseurl }}{{ link.url }}" {% if page.url==link.url %}class="contrast" aria-current="page"
               {% endif %}>{{ link.title }}</a></li>
@@ -148,6 +200,13 @@
       </nav>
     </div>
   </header>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('main-menu').classList.toggle('open');
+    });
+  </script>
 
   <!-- Main Content -->
   <main class="container">
