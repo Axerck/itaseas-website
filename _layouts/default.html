@@ -20,6 +20,30 @@
     content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:image" content="{{ '/assets/cover.png' | absolute_url }}">
 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ITASEAS",
+      "alternateName": "Associazione Italiana Studi Sud-Est Asiatico",
+      "url": "https://itaseas.it",
+      "logo": "https://itaseas.it/assets/logo.svg",
+      "description": "L'Associazione Italiana di Studi sul Sud-Est Asiatico promuove ricerca e cooperazione scientifica su temi legati al Sud-Est Asiatico."
+    }
+  </script>
+  <meta name="keywords"
+    content="{% if page.keywords %}{{ page.keywords }}{% else %}itaseas, south east asia studies, italy, research, conference{% endif %}">
+  <meta name="author" content="{{ site.title }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description"
+    content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:image" content="{{ '/assets/cover.png' | absolute_url }}">
+
   <!-- Pico.css CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 
@@ -68,9 +92,7 @@
     }
 
     /* Logo Styling */
-    .brand-logo img {
-      /* Filter removed to allow SVG colors (White/LightBlue) to show */
-    }
+
 
     .brand-logo:hover img {
       opacity: 0.8;
